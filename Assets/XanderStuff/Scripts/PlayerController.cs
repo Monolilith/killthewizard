@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour {
     private static ContactPoint2D[] cp;
     private float prevVelY = 0f;
 
+    //private float prevPosX;
+
+
 
 
     private void Awake()
@@ -57,11 +60,11 @@ public class PlayerController : MonoBehaviour {
         float dt = Time.deltaTime;
         float fdt = Time.fixedDeltaTime;
 
-        float velX = Input.GetAxis("Horizontal") * walkSpeed;
+        float velX = Input.GetAxisRaw("Horizontal") * walkSpeed;
 
         Vector3 vel = rb.velocity;
         
-        if((velX > 0 && !rightWalled) || (velX < 0 && !leftWalled))
+        if((velX > 0 && !rightWalled) || (velX < 0 && !leftWalled) || velX == 0f)
             vel.x = velX;
 
         if (grounded && (Input.GetAxisRaw("Jump") > 0 || Input.GetAxisRaw("Vertical") > 0))
