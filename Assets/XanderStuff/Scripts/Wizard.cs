@@ -27,19 +27,27 @@ public class Wizard : MonoBehaviour {
     private float bulletVelocity;
     [SerializeField]
     private float maxHealth;
+    [SerializeField]
+    private float riseToFightTime;
 
     [Header("Links")]
 
     [SerializeField]
     private GameObject bulletPrefab;
+    [SerializeField]
+    private Transform startPos;
+    [SerializeField]
+    private Transform fightPos;
 
     public static Wizard Instance { get; private set; }
     public float MaxHealth { get { return maxHealth; } }
     public float hp { get; private set; }
+    public bool gameCompleted { get; private set; }
 
     private int wave = -1;
     private float timer;
-    private bool gameRunning = true;
+    private bool fightMode = false;
+    private float riseTimer;
 
 
 
@@ -49,23 +57,39 @@ public class Wizard : MonoBehaviour {
         hp = maxHealth;
     }
 
+    private void Start()
+    {
+        transform.position = startPos.position;
+    }
+
     private void Update()
     {
-        if (!gameRunning)
-            return;
+        float dt = Time.deltaTime;
 
-
-
-        if (wave < waves.Length)
-            timer -= Time.deltaTime;
-
-        if (timer <= 0)
+        if(fightMode)
         {
-            ++wave;
-            if (wave < waves.Length)
+            if(riseTimer <= riseToFightTime)
             {
-                timer = waves[wave].waitBeforeLaunch;
-                SpawnWave();
+                riseTimer += dt;
+                if (riseTimer > riseToFightTime)
+                    riseTimer = riseToFightTime;
+
+                float xpos = transform.position.x;
+                float ypos = Mathf.Lerp(startPos.position.y, fightPos.position.y, Mathf.InverseLerp(0f, riseToFightTime, riseTimer));
+                transform.position = new Vector3(xpos, ypos);
+            }
+
+            if (wave < waves.Length)
+                timer -= dt;
+
+            if (timer <= 0)
+            {
+                ++wave;
+                if (wave < waves.Length)
+                {
+                    timer = waves[wave].waitBeforeLaunch;
+                    SpawnWave();
+                }
             }
         }
     }
@@ -102,12 +126,20 @@ public class Wizard : MonoBehaviour {
 
     public void EndGame()
     {
-        gameRunning = false;
+        gameCompleted = true;
     }
 
     public void Damage(float amt)
     {
         hp -= amt;
+
+        if(!fightMode)
+        {
+            fightMode = true;
+            timer = waves[0].waitBeforeLaunch;
+            BlackPanelRise.Instance.Rise();
+            TextSlidePlayer.Instance.EngageFightMode();
+        }
 
         if(hp <= 0)
         {

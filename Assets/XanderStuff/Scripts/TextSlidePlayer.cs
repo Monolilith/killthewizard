@@ -18,6 +18,8 @@ public class TextSlidePlayer : MonoBehaviour {
     [SerializeField]
     TextSlide[] slides;
     [SerializeField]
+    TextSlide[] tutorialSlides;
+    [SerializeField]
     private string defaultText;
     [SerializeField]
     private string victoryText;
@@ -34,6 +36,7 @@ public class TextSlidePlayer : MonoBehaviour {
     private float slideTimer = 0f;
     private int slide = -1;
     private bool gameRunning = true;
+    private bool fightMode = false;
 
 
 
@@ -49,20 +52,47 @@ public class TextSlidePlayer : MonoBehaviour {
 
 
 
-        if(slide < slides.Length)
-            slideTimer -= Time.deltaTime;
-
-        if(slideTimer <= 0)
+        if(fightMode)
         {
-            ++slide;
-            if (slide >= slides.Length)
-                textMesh.text = defaultText;
-            else
+            if (slide < slides.Length)
+                slideTimer -= Time.deltaTime;
+
+            if (slideTimer <= 0)
             {
-                slideTimer = slides[slide].time;
-                textMesh.text = slides[slide].text;
+                ++slide;
+                if (slide >= slides.Length)
+                    textMesh.text = defaultText;
+                else
+                {
+                    slideTimer = slides[slide].time;
+                    textMesh.text = slides[slide].text;
+                }
             }
         }
+        else
+        {
+            if (slide < tutorialSlides.Length)
+                slideTimer -= Time.deltaTime;
+
+            if (slideTimer <= 0)
+            {
+                ++slide;
+                if (slide >= tutorialSlides.Length)
+                    textMesh.text = defaultText;
+                else
+                {
+                    slideTimer = tutorialSlides[slide].time;
+                    textMesh.text = tutorialSlides[slide].text;
+                }
+            }
+        }
+    }
+
+    public void EngageFightMode()
+    {
+        fightMode = true;
+        slide = -1;
+        slideTimer = 0f;
     }
 
     public void EndGame(bool playerWon)
