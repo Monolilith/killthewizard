@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    [Header("Settings")]
+    [Header("Player Health Settings")]
 
     [SerializeField]
     private float healthSpriteSpacing;
+    [SerializeField]
+    private Sprite healthFullSprite;
+    [SerializeField]
+    private Sprite healthEmptySprite;
+
+    //[Header("Wizard Health Settings")]
 
     [Header("Links")]
 
@@ -16,9 +22,9 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     private GameObject healthPointPrefab;
     [SerializeField]
-    private Sprite healthFullSprite;
+    private RectTransform bossHealthMask;
     [SerializeField]
-    private Sprite healthEmptySprite;
+    private RectTransform bossHealthMaskParent;
 
     private SpriteRenderer[] hearts;
 
@@ -47,6 +53,9 @@ public class UIManager : MonoBehaviour {
             else
                 hearts[i].sprite = healthEmptySprite;
         }
+
+        float parentWidth = bossHealthMaskParent.rect.size.x;
+        bossHealthMask.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.InverseLerp(0f, Wizard.Instance.MaxHealth, Wizard.Instance.hp) * parentWidth);
     }
 
 }

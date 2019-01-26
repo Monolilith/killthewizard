@@ -25,6 +25,8 @@ public class Wizard : MonoBehaviour {
     private float bulletLifetime;
     [SerializeField]
     private float bulletVelocity;
+    [SerializeField]
+    private float maxHealth;
 
     [Header("Links")]
 
@@ -32,6 +34,8 @@ public class Wizard : MonoBehaviour {
     private GameObject bulletPrefab;
 
     public static Wizard Instance { get; private set; }
+    public float MaxHealth { get { return maxHealth; } }
+    public float hp { get; private set; }
 
     private int wave = -1;
     private float timer;
@@ -42,6 +46,7 @@ public class Wizard : MonoBehaviour {
     private void Awake()
     {
         Instance = this;
+        hp = maxHealth;
     }
 
     private void Update()
@@ -98,6 +103,18 @@ public class Wizard : MonoBehaviour {
     public void EndGame()
     {
         gameRunning = false;
+    }
+
+    public void Damage(float amt)
+    {
+        hp -= amt;
+
+        if(hp <= 0)
+        {
+            hp = 0;
+            TextSlidePlayer.Instance.EndGame(true);
+            EndGame();
+        }
     }
 
 }
