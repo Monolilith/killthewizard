@@ -1898,7 +1898,7 @@ MonoBehaviour:
   ungroundedThreshold: 0.1
   groundCastSize: 1
   groundCastDist: 0.2
-  wallCastSize: 1.3
+  wallCastSize: 1
   wallCastDist: 0.2
   playerMask:
     serializedVersion: 2
