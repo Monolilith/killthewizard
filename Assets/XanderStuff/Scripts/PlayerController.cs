@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
     [Header("Physics Settings")]
 
     [SerializeField]
+    private float fallAccelMultiplier;
+    [SerializeField]
     private float ungroundedThreshold;
     [SerializeField]
     private float groundCastSize;
@@ -133,6 +135,12 @@ public class PlayerController : MonoBehaviour {
             leftWalled = true;
         else
             leftWalled = false;
+
+        if(!grounded && velY < 0)
+        {
+            velY += Physics.gravity.y * Time.fixedDeltaTime * fallAccelMultiplier;
+            rb.velocity = new Vector2(rb.velocity.x, velY);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

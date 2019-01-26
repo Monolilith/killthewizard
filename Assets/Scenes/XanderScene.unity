@@ -2124,6 +2124,7 @@ MonoBehaviour:
   swipeProjectileSpeed: 40
   swipeLifetime: 0.06
   swipeCooldown: 1
+  fallAccelMultiplier: 3
   ungroundedThreshold: 0.1
   groundCastSize: 1
   groundCastDist: 0.2
