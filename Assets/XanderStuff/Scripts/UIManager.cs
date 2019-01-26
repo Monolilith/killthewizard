@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour {
         int hp = PlayerController.Instance.hp;
         for(int i = 0; i < hearts.Length; ++i)
         {
-            if (i < hp)
+            if (hearts.Length - i - 1 < hp)
                 hearts[i].sprite = healthFullSprite;
             else
                 hearts[i].sprite = healthEmptySprite;
