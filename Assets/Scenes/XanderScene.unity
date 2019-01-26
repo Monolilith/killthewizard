@@ -1368,7 +1368,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2121,6 +2121,9 @@ MonoBehaviour:
   walkSpeed: 10
   jumpVel: 10
   maxHealth: 3
+  swipeProjectileSpeed: 40
+  swipeLifetime: 0.06
+  swipeCooldown: 1
   ungroundedThreshold: 0.1
   groundCastSize: 1
   groundCastDist: 0.2
@@ -2130,6 +2133,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   rb: {fileID: 1906805143}
+  swipePrefab: {fileID: 1974023853591986, guid: 2ba3de8d985ab1b4f9726c58053ce4a9,
+    type: 2}
 --- !u!4 &1906805146
 Transform:
   m_ObjectHideFlags: 0

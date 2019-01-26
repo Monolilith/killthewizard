@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour {
     private float jumpVel;
     [SerializeField]
     private int maxHealth;
+    [SerializeField]
+    private float swipeProjectileSpeed;
+    [SerializeField]
+    private float swipeLifetime;
+    [SerializeField]
+    private float swipeCooldown;
 
     [Header("Physics Settings")]
 
@@ -32,6 +38,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
+    private GameObject swipePrefab;
 
     public int hp { get; private set; }
     public int MaxHealth { get { return maxHealth; } }
@@ -41,7 +49,7 @@ public class PlayerController : MonoBehaviour {
     private bool rightWalled;
     private bool leftWalled;
     private static ContactPoint2D[] cp;
-    private float prevVelY = 0f;
+    private float swipeHeat;
 
     //private float prevPosX;
 
@@ -75,6 +83,28 @@ public class PlayerController : MonoBehaviour {
 
         rb.velocity = vel;
 
+
+
+        if (swipeHeat > 0)
+            swipeHeat -= dt;
+
+        if(Input.GetMouseButtonDown(0) && swipeHeat <= 0)
+        {
+            swipeHeat = swipeCooldown;
+
+            GameObject obj = Instantiate(swipePrefab);
+            obj.transform.position = transform.position;
+
+            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            diff.Normalize();
+
+            float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            obj.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
+            obj.GetComponent<Rigidbody2D>().velocity = obj.transform.up * swipeProjectileSpeed;
+            Destroy(obj, swipeLifetime);
+        }
+
     }
 
     private void FixedUpdate()
@@ -103,8 +133,6 @@ public class PlayerController : MonoBehaviour {
             leftWalled = true;
         else
             leftWalled = false;
-
-        prevVelY = velY;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
