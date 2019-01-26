@@ -1412,6 +1412,8 @@ MonoBehaviour:
   walkSpeed: 10
   jumpVel: 10
   ungroundedThreshold: 0.1
+  groundCastSize: 1
+  groundCastDist: 0.1
   rb: {fileID: 1906805143}
 --- !u!4 &1906805146
 Transform:

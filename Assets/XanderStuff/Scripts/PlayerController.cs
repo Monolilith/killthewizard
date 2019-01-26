@@ -58,10 +58,10 @@ public class PlayerController : MonoBehaviour {
         if (velY < -ungroundedThreshold || velY > ungroundedThreshold)
             grounded = false;
 
-        if (Physics2D.BoxCast(transform.position, Vector2.one * groundCastSize, 0f, -Vector2.up, groundCastDist))
-        {
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * groundCastSize, 0f, -Vector2.up, groundCastDist);
+        Debug.Log(hit.transform);
+        if (hit.transform != null)
             grounded = true;
-        }
 
         prevVelY = velY;
     }
