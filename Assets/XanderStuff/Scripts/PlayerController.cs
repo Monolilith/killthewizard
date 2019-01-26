@@ -9,9 +9,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float walkSpeed;
     [SerializeField]
-    private float jumpForce;
+    private float jumpVel;
     [SerializeField]
     private float ungroundedThreshold;
+    [SerializeField]
+    private float groundCastSize;
+    [SerializeField]
+    private float groundCastDist;
 
     [Header("Links")]
 
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool grounded;
     private static ContactPoint2D[] cp;
+    private float prevVelY = 0f;
 
 
 
@@ -28,13 +33,18 @@ public class PlayerController : MonoBehaviour {
 
         float dt = Time.deltaTime;
 
-        float velX = Input.GetAxis("Horizontal") * walkSpeed * dt;
+        float velX = Input.GetAxis("Horizontal") * walkSpeed;
 
         Vector3 vel = rb.velocity;
         vel.x = velX;
-        rb.velocity = vel;
 
-        rb.AddForce(Vector2.up * Input.GetAxis("Jump") * jumpForce);
+        if (grounded && (Input.GetAxisRaw("Jump") > 0 || Input.GetAxisRaw("Vertical") > 0))
+        {
+            vel.y = jumpVel;
+            grounded = false;
+        }
+
+        rb.velocity = vel;
 
     }
 
@@ -47,6 +57,13 @@ public class PlayerController : MonoBehaviour {
 
         if (velY < -ungroundedThreshold || velY > ungroundedThreshold)
             grounded = false;
+
+        if (Physics2D.BoxCast(transform.position, Vector2.one * groundCastSize, 0f, -Vector2.up, groundCastDist))
+        {
+            grounded = true;
+        }
+
+        prevVelY = velY;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -54,8 +71,16 @@ public class PlayerController : MonoBehaviour {
         cp = collision.contacts;
         Debug.Log("COLLISION_NORMAL: " + collision.contacts[0].normal);
 
-        if (collision.contacts[0].normal.y > 0)
+        Vector2 normal = collision.contacts[0].normal;
+
+        if (normal.y > 0)
             grounded = true;
+        else if(normal.x > 0 || normal.x < 0)
+        {
+            Vector2 vel = rb.velocity;
+            vel.y = prevVelY;
+            rb.velocity = vel;
+        }
     }
 
 }
