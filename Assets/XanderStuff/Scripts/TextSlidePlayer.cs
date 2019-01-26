@@ -29,11 +29,18 @@ public class TextSlidePlayer : MonoBehaviour {
     [SerializeField]
     private TMPro.TextMeshProUGUI textMesh;
 
+    public static TextSlidePlayer Instance { get; private set; }
+
     private float slideTimer = 0f;
     private int slide = -1;
     private bool gameRunning = true;
 
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {

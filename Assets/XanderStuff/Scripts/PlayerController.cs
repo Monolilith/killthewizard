@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     private float walkSpeed;
     [SerializeField]
     private float jumpVel;
+    [SerializeField]
+    private int maxHealth;
 
     [Header("Physics Settings")]
 
@@ -31,6 +33,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Rigidbody2D rb;
 
+    public int hp { get; private set; }
+    public int MaxHealth { get { return maxHealth; } }
+    public static PlayerController Instance { get; private set; }
+
     private bool grounded;
     private bool rightWalled;
     private bool leftWalled;
@@ -38,6 +44,12 @@ public class PlayerController : MonoBehaviour {
     private float prevVelY = 0f;
 
 
+
+    private void Awake()
+    {
+        hp = maxHealth;
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -101,6 +113,19 @@ public class PlayerController : MonoBehaviour {
 
         if (normal.y > 0)
             grounded = true;
+    }
+
+    public void Damage()
+    {
+        --hp;
+        if (hp == 0)
+            Kill();
+    }
+
+    private void Kill()
+    {
+        Wizard.Instance.EndGame();
+        TextSlidePlayer.Instance.EndGame(false);
     }
 
 }
