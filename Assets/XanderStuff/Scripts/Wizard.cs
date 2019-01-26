@@ -31,11 +31,18 @@ public class Wizard : MonoBehaviour {
     [SerializeField]
     private GameObject bulletPrefab;
 
+    public static Wizard Instance { get; private set; }
+
     private int wave = -1;
     private float timer;
     private bool gameRunning = true;
 
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
