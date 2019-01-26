@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    [Header("Settings")]
+    [Header("Gameplay Settings")]
 
     [SerializeField]
     private float walkSpeed;
     [SerializeField]
     private float jumpVel;
+
+    [Header("Physics Settings")]
+
     [SerializeField]
     private float ungroundedThreshold;
     [SerializeField]
     private float groundCastSize;
     [SerializeField]
     private float groundCastDist;
+    [SerializeField]
+    private float wallCastSize;
+    [SerializeField]
+    private float wallCastDist;
+    [SerializeField]
+    private LayerMask playerMask;
 
     [Header("Links")]
 
@@ -23,6 +32,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
 
     private bool grounded;
+    private bool rightWalled;
+    private bool leftWalled;
     private static ContactPoint2D[] cp;
     private float prevVelY = 0f;
 
@@ -32,11 +43,14 @@ public class PlayerController : MonoBehaviour {
     {
 
         float dt = Time.deltaTime;
+        float fdt = Time.fixedDeltaTime;
 
         float velX = Input.GetAxis("Horizontal") * walkSpeed;
 
         Vector3 vel = rb.velocity;
-        vel.x = velX;
+        
+        if((velX > 0 && !rightWalled) || (velX < 0 && !leftWalled))
+            vel.x = velX;
 
         if (grounded && (Input.GetAxisRaw("Jump") > 0 || Input.GetAxisRaw("Vertical") > 0))
         {
@@ -58,10 +72,22 @@ public class PlayerController : MonoBehaviour {
         if (velY < -ungroundedThreshold || velY > ungroundedThreshold)
             grounded = false;
 
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * groundCastSize, 0f, -Vector2.up, groundCastDist);
-        Debug.Log(hit.transform);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * groundCastSize, 0f, -Vector2.up, groundCastDist, playerMask);
+        
         if (hit.transform != null)
             grounded = true;
+
+        hit = Physics2D.BoxCast(transform.position, Vector2.one * wallCastSize, 0f, Vector2.right, wallCastDist, playerMask);
+        if (hit.transform != null)
+            rightWalled = true;
+        else
+            rightWalled = false;
+
+        hit = Physics2D.BoxCast(transform.position, Vector2.one * wallCastSize, 0f, -Vector2.right, wallCastDist, playerMask);
+        if (hit.transform != null)
+            leftWalled = true;
+        else
+            leftWalled = false;
 
         prevVelY = velY;
     }
@@ -75,12 +101,6 @@ public class PlayerController : MonoBehaviour {
 
         if (normal.y > 0)
             grounded = true;
-        else if(normal.x > 0 || normal.x < 0)
-        {
-            Vector2 vel = rb.velocity;
-            vel.y = prevVelY;
-            rb.velocity = vel;
-        }
     }
 
 }
