@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeToBlack : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class FadeToBlack : MonoBehaviour {
 
     [SerializeField]
     private float fadeLength;
+    [SerializeField]
+    private string menuSceneName;
 
     [Header("Links")]
 
@@ -39,7 +42,10 @@ public class FadeToBlack : MonoBehaviour {
             blackImage.color = color;
 
             if (timer == 0f)
+            {
                 fading = false;
+                SceneManager.LoadSceneAsync(menuSceneName);
+            }
         }
     }
 
