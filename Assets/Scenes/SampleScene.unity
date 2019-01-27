@@ -421,6 +421,7 @@ MonoBehaviour:
     type: 2}
   startPos: {fileID: 378355551}
   fightPos: {fileID: 685010823}
+  exitDoor: {fileID: 0}
 --- !u!4 &208209890
 Transform:
   m_ObjectHideFlags: 0
@@ -1127,7 +1128,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7c24342789e7646e59552ba343485f0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1406,7 +1407,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 200, y: 10}
+  m_SizeDelta: {x: 178.1, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1128928518
 MonoBehaviour:
@@ -1587,6 +1588,8 @@ MonoBehaviour:
   defaultText: You shall not succeed!
   victoryText: HOMEBOUND
   failureText: DEATH BY TUTORIAL
+  tutorialCompleteText: 
+  doorEnteredText: 
   textMesh: {fileID: 403554991}
 --- !u!1 &1450548069
 GameObject:
@@ -1597,8 +1600,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1450548071}
   - component: {fileID: 1450548070}
+  - component: {fileID: 1450548073}
+  - component: {fileID: 1450548072}
   m_Layer: 11
-  m_Name: Door Entrance (1)
+  m_Name: Door Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1663,6 +1668,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1450548072
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1450548069}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0121665, y: -0.08516264}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 2.4, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3797083, y: 1.1096747}
+  m_EdgeRadius: 0
+--- !u!114 &1450548073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1450548069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a978bd32fd0e77a4da8c873053960c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488099437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,7 +1891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12, y: 76}
+  m_AnchoredPosition: {x: -12, y: 681.7}
   m_SizeDelta: {x: -200, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1869728778
@@ -1888,7 +1929,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -112}
-  m_SizeDelta: {x: 200, y: 10}
+  m_SizeDelta: {x: 200, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869728780
 MonoBehaviour:
@@ -1909,8 +1950,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3cc304686eb474ba18a089f78f3bd0b7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2070,11 +2111,15 @@ MonoBehaviour:
   healthSpriteSpacing: 1.5
   healthFullSprite: {fileID: 21300000, guid: 31f9ff3ec40e84e6f92a587d4d4f4b39, type: 3}
   healthEmptySprite: {fileID: 21300000, guid: 5593a6675914242a4a79203c6eba70d2, type: 3}
+  wizardPoofLength: 0
+  hurtFlashLength: 0
   playerHealthStart: {fileID: 1210670485}
   healthPointPrefab: {fileID: 1322573114029084, guid: b8cefab712d634441bbf1d21ca3f6cee,
     type: 2}
   bossHealthMask: {fileID: 706612040}
   bossHealthMaskParent: {fileID: 1128928517}
+  wizardPoof: {fileID: 0}
+  hurtFlash: {fileID: 0}
 --- !u!4 &2065462938
 Transform:
   m_ObjectHideFlags: 0
