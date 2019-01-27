@@ -63,11 +63,11 @@ public class PlayerController : MonoBehaviour {
         Instance = this;
         animator = GetComponent<Animator>();
         animator.SetBool("Swordy", false);
+
     }
 
     void Update()
     {
-
         float dt = Time.deltaTime;
         float fdt = Time.fixedDeltaTime;
 
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour {
 
         rb.velocity = vel;
 
-
+        animator.SetFloat("Horiz", Mathf.Abs(velX));
 
         if (swipeHeat > 0)
             swipeHeat -= dt;
@@ -147,6 +147,13 @@ public class PlayerController : MonoBehaviour {
             velY += Physics.gravity.y * Time.fixedDeltaTime * fallAccelMultiplier;
             rb.velocity = new Vector2(rb.velocity.x, velY);
         }
+
+        if (grounded)
+            animator.SetFloat("Vert", 0);
+        else
+            animator.SetFloat("Vert", Mathf.Abs(velY));
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
