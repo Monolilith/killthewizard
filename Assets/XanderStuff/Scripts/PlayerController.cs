@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour {
     public void Damage()
     {
         --hp;
+        UIManager.Instance.DoHurt();
         if (hp == 0)
             Kill();
     }

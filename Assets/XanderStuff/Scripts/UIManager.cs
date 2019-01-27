@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour {
     private Sprite healthEmptySprite;
     [SerializeField]
     private float wizardPoofLength;
+    [SerializeField]
+    private float hurtFlashLength;
 
     [Header("Links")]
 
@@ -27,6 +29,8 @@ public class UIManager : MonoBehaviour {
     private RectTransform bossHealthMaskParent;
     [SerializeField]
     private UnityEngine.UI.Image wizardPoof;
+    [SerializeField]
+    private UnityEngine.UI.Image hurtFlash;
 
     public static UIManager Instance { get; private set; }
 
@@ -34,6 +38,7 @@ public class UIManager : MonoBehaviour {
     private float poofTimer;
     private bool poofCompleted;
     private bool poofBegun;
+    private float hurtFlashTimer;
 
 
 
@@ -96,12 +101,28 @@ public class UIManager : MonoBehaviour {
                 color.a = Mathf.InverseLerp(0f, wizardPoofLength, poofTimer);
             wizardPoof.color = color;
         }
+
+        if(hurtFlashTimer > 0f)
+        {
+            hurtFlashTimer -= Time.deltaTime;
+            if (hurtFlashTimer < 0)
+                hurtFlashTimer = 0f;
+
+            Color color = hurtFlash.color;
+            color.a = Mathf.InverseLerp(0f, hurtFlashLength, hurtFlashTimer);
+            hurtFlash.color = color;
+        }
     }
 
     public void Poof()
     {
         poofBegun = true;
         poofTimer = wizardPoofLength;
+    }
+
+    public void DoHurt()
+    {
+        hurtFlashTimer = hurtFlashLength;
     }
 
 }
