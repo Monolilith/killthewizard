@@ -11,6 +11,7 @@ public class ExitDoor : MonoBehaviour {
         {
             Destroy(pc.gameObject);
             TextSlidePlayer.Instance.EnterDoor();
+            FadeToBlack.Instance.Fade();
         }
     }
 
