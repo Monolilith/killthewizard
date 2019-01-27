@@ -2185,6 +2185,8 @@ MonoBehaviour:
   bossHealthMaskParent: {fileID: 1906782206}
   wizardPoof: {fileID: 1282695223}
   hurtFlash: {fileID: 1602801483}
+  wizardUIElements:
+  - {fileID: 1906782205}
 --- !u!4 &1094128569
 Transform:
   m_ObjectHideFlags: 0

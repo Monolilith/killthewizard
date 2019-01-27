@@ -32,7 +32,11 @@ public class MainMenuUI : MonoBehaviour {
 
     private void Update()
     {
-        if(waitingToStart && !audioSource.isPlaying)
+        float ysize = Screen.currentResolution.height - 100f;
+        int ysizeint = (int)(ysize * ((1f / 5f) * 4f));
+        Screen.SetResolution(ysizeint, (int)ysize, false);
+
+        if (waitingToStart && !audioSource.isPlaying)
             SceneManager.LoadSceneAsync(gameSceneName);
     }
 

@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour {
     private UnityEngine.UI.Image wizardPoof;
     [SerializeField]
     private UnityEngine.UI.Image hurtFlash;
+    [SerializeField]
+    private GameObject[] wizardUIElements;
 
     public static UIManager Instance { get; private set; }
 
@@ -62,6 +64,10 @@ public class UIManager : MonoBehaviour {
 
     private void Update()
     {
+        float ysize = Screen.currentResolution.height - 100f;
+        int ysizeint = (int)(ysize * ((1f / 5f) * 4f));
+        Screen.SetResolution(ysizeint, (int)ysize, false);
+
         int hp = PlayerController.Instance.hp;
         for(int i = 0; i < hearts.Length; ++i)
         {
@@ -88,6 +94,8 @@ public class UIManager : MonoBehaviour {
                     Wizard.Instance.EndGame();
                     Wizard.Instance.ActivateDoor();
                     Destroy(Wizard.Instance.gameObject);
+                    for (int i = 0; i < wizardUIElements.Length; ++i)
+                        wizardUIElements[i].SetActive(false);
                 }
             }
         }
