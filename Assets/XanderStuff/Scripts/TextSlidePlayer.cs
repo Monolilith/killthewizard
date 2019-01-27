@@ -105,6 +105,7 @@ public class TextSlidePlayer : MonoBehaviour {
     public void EngageFightMode()
     {
         fightMode = true;
+        gameRunning = true;
         slide = -1;
         slideTimer = 0f;
     }
@@ -117,7 +118,10 @@ public class TextSlidePlayer : MonoBehaviour {
         if (endState == EndState.VICTORY)
             textMesh.text = victoryText;
         else if (endState == EndState.FAILURE)
+        {
             textMesh.text = failureText;
+            FadeToBlack.Instance.Fade();
+        }
         else if (endState == EndState.TUTORIAL_COMPLETE)
         {
             textMesh.text = tutorialCompleteText;
