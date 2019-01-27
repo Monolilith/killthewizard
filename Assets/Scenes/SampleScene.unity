@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 40716280}
   - component: {fileID: 40716279}
   - component: {fileID: 40716284}
+  - component: {fileID: 40716285}
   m_Layer: 8
   m_Name: Player (1)
   m_TagString: Untagged
@@ -250,10 +251,14 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 55
+  attackSound: {fileID: 8300000, guid: 2bf1f540693ac26488be7f8a9edd7c07, type: 3}
+  jumpSound: {fileID: 8300000, guid: 67d157634aa1e274482a204ab6e0667d, type: 3}
+  hitSound: {fileID: 8300000, guid: 5e750c9b38c1ed6488493ab8afbf0eb7, type: 3}
   rb: {fileID: 40716280}
   swipePrefab: {fileID: 1974023853591986, guid: 2ba3de8d985ab1b4f9726c58053ce4a9,
     type: 2}
   spriteRenderer: {fileID: 40716281}
+  audioSource: {fileID: 40716285}
 --- !u!4 &40716283
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +290,101 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &40716285
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 40716278}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &208209886
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +397,7 @@ GameObject:
   - component: {fileID: 208209888}
   - component: {fileID: 208209887}
   - component: {fileID: 208209891}
+  - component: {fileID: 208209892}
   m_Layer: 0
   m_Name: Wizard (1)
   m_TagString: Untagged
@@ -552,11 +653,14 @@ MonoBehaviour:
   bulletVelocity: 10
   maxHealth: 200
   riseToFightTime: 5
+  shootSound: {fileID: 0}
+  hitSound: {fileID: 0}
   bulletPrefab: {fileID: 1753894043020768, guid: 0f04fe2f14ba87b478e9d5f10cedce22,
     type: 2}
   startPos: {fileID: 378355551}
   fightPos: {fileID: 685010823}
   exitDoor: {fileID: 1450548069}
+  audioSource: {fileID: 208209892}
 --- !u!4 &208209890
 Transform:
   m_ObjectHideFlags: 0
@@ -588,6 +692,176 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &208209892
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208209886}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &360298836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360298838}
+  - component: {fileID: 360298837}
+  m_Layer: 0
+  m_Name: Stones-Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &360298837
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360298836}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 2b160c3905631d647995a25bd61b85c1, type: 3}
+  m_Color: {r: 0.4056604, g: 0.380785, b: 0.380785, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6, y: 6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &360298838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360298836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03, y: 5.43, z: 50}
+  m_LocalScale: {x: 3.48, y: 4.07, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &378355550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1922,7 @@ MonoBehaviour:
     time: 5
   - text: Your sword can fire beams in a direction you click.
     time: 5
-  - text: Have caution! The magic of foes may harm you!
+  - text: Have caution! The magic of foes may damage you!
     time: 5
   - text: Should you come to harm, you shall lose a heart.
     time: 5
@@ -1656,16 +1930,62 @@ MonoBehaviour:
     time: 5
   - text: If your hearts deplete, you shall be at your foes' mercy!
     time: 5
-  - text: Blah blah blah blah...
+  - text: Thus, great caution is imperative in all places.
     time: 5
-  - text: Blaaaahhh...
+  - text: You must remember to save your progress often.
+    time: 5
+  - text: You may do so at wondrous orbs along your way.
+    time: 5
+  - text: Saving shall restore your hearts and record your adventure.
+    time: 5
+  - text: If you wish to load a save file, press the MENU button at any time.
+    time: 5
+  - text: You shall be transported to the wondrous orb you saved at.
+    time: 5
+  - text: Have caution! If you turn off your system without saving you shall lose
+      progress!
+    time: 5
+  - text: Do not turn off the system or exit the game while the wondrous orb glows.
+    time: 5
+  - text: You must remember to save your progress often.
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
+    time: 5
+  - text: 
     time: 5
   defaultText: You shall not succeed!
   victoryText: '...'
   failureText: DEATH BY TUTORIAL
   tutorialCompleteText: Now go, bold hero, upon your quest!
   doorEnteredText: HOMEBOUND <3
+  charIdxAddWait: 0
+  tutorialSlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
+  fightSlideSound: {fileID: 8300000, guid: afe2a431691d0bf4b921baef7014acfa, type: 3}
+  victorySlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
+  failureSlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
+  tutorialCompleteSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402,
+    type: 3}
+  doorEnteredSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
   textMesh: {fileID: 1117571980}
+  audioSource: {fileID: 40716285}
 --- !u!1 &1450548069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,6 +2263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeLength: 5
+  menuSceneName: 
   blackImage: {fileID: 1691330965}
 --- !u!1 &1869728778
 GameObject:
