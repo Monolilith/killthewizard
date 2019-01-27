@@ -49,6 +49,10 @@ public class Wizard : MonoBehaviour {
     private int wave = -1;
     private float timer;
     private bool fightMode = false;
+
+
+    Animator animator;
+
     private float riseTimer;
 
 
@@ -63,6 +67,9 @@ public class Wizard : MonoBehaviour {
     {
         transform.position = startPos.position;
         exitDoor.SetActive(false);
+
+        animator = GetComponent<Animator>();
+        animator.SetBool("GetHit", false);
     }
 
     private void Update()
@@ -74,7 +81,8 @@ public class Wizard : MonoBehaviour {
 
         if(fightMode)
         {
-            if(riseTimer <= riseToFightTime)
+            animator.SetBool("GetHit", true);
+            if (riseTimer <= riseToFightTime)
             {
                 riseTimer += dt;
                 if (riseTimer > riseToFightTime)
