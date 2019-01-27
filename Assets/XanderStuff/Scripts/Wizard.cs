@@ -38,6 +38,8 @@ public class Wizard : MonoBehaviour {
     private Transform startPos;
     [SerializeField]
     private Transform fightPos;
+    [SerializeField]
+    private GameObject exitDoor;
 
     public static Wizard Instance { get; private set; }
     public float MaxHealth { get { return maxHealth; } }
@@ -60,6 +62,7 @@ public class Wizard : MonoBehaviour {
     private void Start()
     {
         transform.position = startPos.position;
+        exitDoor.SetActive(false);
     }
 
     private void Update()
@@ -129,6 +132,11 @@ public class Wizard : MonoBehaviour {
         gameCompleted = true;
     }
 
+    public void ActivateDoor()
+    {
+        exitDoor.SetActive(true);
+    }
+
     public void Damage(float amt)
     {
         hp -= amt;
@@ -139,13 +147,16 @@ public class Wizard : MonoBehaviour {
             timer = waves[0].waitBeforeLaunch;
             BlackPanelRise.Instance.Rise();
             TextSlidePlayer.Instance.EngageFightMode();
+            exitDoor.SetActive(false);
         }
 
         if(hp <= 0)
         {
             hp = 0;
-            TextSlidePlayer.Instance.EndGame(true);
-            EndGame();
+            TextSlidePlayer.Instance.EndGame(TextSlidePlayer.EndState.VICTORY);
+            //EndGame();
+            UIManager.Instance.Poof();
+            gameCompleted = true;
         }
     }
 
