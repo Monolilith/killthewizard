@@ -84,6 +84,9 @@ public class TextSlidePlayer : MonoBehaviour {
     {
         Instance = this;
         audioSource.pitch = defaultPitch;
+        
+        if (SceneBridge.Instance.characterName == null)
+            SceneBridge.Instance.characterName = "CHARACTER_NAME_NOT_SET";
     }
 
     private void Update()
@@ -211,6 +214,7 @@ public class TextSlidePlayer : MonoBehaviour {
     private void SetSlideText(string s)
     {
         slideText = s;
+        slideText = slideText.Replace("%NAME%", SceneBridge.Instance.characterName);
         charidx = 0;
     }
 

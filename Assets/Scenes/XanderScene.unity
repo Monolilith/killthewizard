@@ -1684,7 +1684,7 @@ MonoBehaviour:
   - text: Three
     time: 5
   tutorialSlides:
-  - text: This is the tutorial.
+  - text: Hello %NAME%. This is the tutorial.
     time: 2
   - text: The tutorial is helpful.
     time: 2
