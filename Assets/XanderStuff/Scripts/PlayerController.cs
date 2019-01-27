@@ -36,6 +36,15 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private LayerMask playerMask;
 
+    [Header("Audio Links")]
+
+    [SerializeField]
+    private AudioClip attackSound;
+    [SerializeField]
+    private AudioClip jumpSound;
+    [SerializeField]
+    private AudioClip hitSound;
+
     [Header("Links")]
 
     [SerializeField]
@@ -44,6 +53,8 @@ public class PlayerController : MonoBehaviour {
     private GameObject swipePrefab;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private AudioSource audioSource;
     Animator animator;
 
     public int hp { get; private set; }
@@ -88,6 +99,7 @@ public class PlayerController : MonoBehaviour {
         {
             vel.y = jumpVel;
             grounded = false;
+            audioSource.PlayOneShot(jumpSound);
         }
 
         rb.velocity = vel;
@@ -164,6 +176,7 @@ public class PlayerController : MonoBehaviour {
     {
         --hp;
         UIManager.Instance.DoHurt();
+        audioSource.PlayOneShot(hitSound);
         if (hp == 0)
             Kill();
     }
@@ -209,6 +222,8 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         animator.SetBool("Swordy", false);
+
+        audioSource.PlayOneShot(attackSound);
 
         GameObject obj = Instantiate(swipePrefab);
         obj.transform.position = transform.position;

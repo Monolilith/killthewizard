@@ -30,6 +30,13 @@ public class Wizard : MonoBehaviour {
     [SerializeField]
     private float riseToFightTime;
 
+    [Header("Audio Links")]
+
+    [SerializeField]
+    private AudioClip shootSound;
+    [SerializeField]
+    private AudioClip hitSound;
+
     [Header("Links")]
 
     [SerializeField]
@@ -40,6 +47,8 @@ public class Wizard : MonoBehaviour {
     private Transform fightPos;
     [SerializeField]
     private GameObject exitDoor;
+    [SerializeField]
+    private AudioSource audioSource;
 
     public static Wizard Instance { get; private set; }
     public float MaxHealth { get { return maxHealth; } }
@@ -110,6 +119,8 @@ public class Wizard : MonoBehaviour {
 
     private void SpawnWave()
     {
+        audioSource.PlayOneShot(shootSound);
+
         float increment = -180f / (waves[wave].bulletCount + 1);
 
         for(int i = 1; i <= waves[wave].bulletCount; ++i)
@@ -151,6 +162,9 @@ public class Wizard : MonoBehaviour {
     public void Damage(float amt)
     {
         hp -= amt;
+
+        if(hitSound)
+            audioSource.PlayOneShot(hitSound);
 
         if(!fightMode)
         {
