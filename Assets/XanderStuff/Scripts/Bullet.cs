@@ -9,7 +9,8 @@ public class Bullet : MonoBehaviour {
         PlayerController p = collision.gameObject.GetComponent<PlayerController>();
         if(p != null)
         {
-            p.Damage();
+            if(Wizard.Instance.hp > 0)
+                p.Damage();
             Destroy(gameObject);
         }
     }
