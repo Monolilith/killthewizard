@@ -2467,6 +2467,7 @@ MonoBehaviour:
   rb: {fileID: 1668841016}
   swipePrefab: {fileID: 1974023853591986, guid: 2ba3de8d985ab1b4f9726c58053ce4a9,
     type: 2}
+  spriteRenderer: {fileID: 1668841017}
 --- !u!4 &1668841019
 Transform:
   m_ObjectHideFlags: 0
@@ -2833,6 +2834,7 @@ MonoBehaviour:
   rb: {fileID: 1906805143}
   swipePrefab: {fileID: 1974023853591986, guid: 2ba3de8d985ab1b4f9726c58053ce4a9,
     type: 2}
+  spriteRenderer: {fileID: 0}
 --- !u!4 &1906805146
 Transform:
   m_ObjectHideFlags: 0

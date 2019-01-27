@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
     [SerializeField]
     private GameObject swipePrefab;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
     Animator animator;
 
     public int hp { get; private set; }
@@ -73,6 +75,9 @@ public class PlayerController : MonoBehaviour {
 
         float velX = Input.GetAxisRaw("Horizontal") * walkSpeed;
 
+        if(velX != 0)
+            spriteRenderer.flipX = velX < 0 ? true : false;
+
         Vector3 vel = rb.velocity;
         
         if((velX > 0 && !rightWalled) || (velX < 0 && !leftWalled) || velX == 0f)
@@ -93,21 +98,8 @@ public class PlayerController : MonoBehaviour {
 
         if(Input.GetMouseButtonDown(0) && swipeHeat <= 0)
         {
-
-
+            
             swipeHeat = swipeCooldown;
-
-            GameObject obj = Instantiate(swipePrefab);
-            obj.transform.position = transform.position;
-
-            Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            diff.Normalize();
-
-            float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-            obj.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-
-            obj.GetComponent<Rigidbody2D>().velocity = obj.transform.up * swipeProjectileSpeed;
-            Destroy(obj, swipeLifetime);
 
             StartCoroutine("heck");
 
@@ -215,6 +207,18 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         animator.SetBool("Swordy", false);
+
+        GameObject obj = Instantiate(swipePrefab);
+        obj.transform.position = transform.position;
+
+        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        diff.Normalize();
+
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        obj.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
+        obj.GetComponent<Rigidbody2D>().velocity = obj.transform.up * swipeProjectileSpeed;
+        Destroy(obj, swipeLifetime);
     }
 
 
