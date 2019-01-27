@@ -241,7 +241,7 @@ MonoBehaviour:
   maxHealth: 3
   swipeProjectileSpeed: 15
   swipeLifetime: 0.5
-  swipeCooldown: 0
+  swipeCooldown: 1
   fallAccelMultiplier: 5
   ungroundedThreshold: 0.1
   groundCastSize: 1
@@ -250,7 +250,7 @@ MonoBehaviour:
   wallCastDist: 0.2
   playerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   attackSound: {fileID: 8300000, guid: 2bf1f540693ac26488be7f8a9edd7c07, type: 3}
   jumpSound: {fileID: 8300000, guid: 67d157634aa1e274482a204ab6e0667d, type: 3}
   hitSound: {fileID: 8300000, guid: 5e750c9b38c1ed6488493ab8afbf0eb7, type: 3}
@@ -653,8 +653,8 @@ MonoBehaviour:
   bulletVelocity: 10
   maxHealth: 200
   riseToFightTime: 5
-  shootSound: {fileID: 0}
-  hitSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 0370883c1bba1ec499a38658dd403138, type: 3}
+  hitSound: {fileID: 8300000, guid: 5e750c9b38c1ed6488493ab8afbf0eb7, type: 3}
   bulletPrefab: {fileID: 1753894043020768, guid: 0f04fe2f14ba87b478e9d5f10cedce22,
     type: 2}
   startPos: {fileID: 378355551}
@@ -839,7 +839,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2b160c3905631d647995a25bd61b85c1, type: 3}
-  m_Color: {r: 0.4056604, g: 0.380785, b: 0.380785, a: 1}
+  m_Color: {r: 0.38148642, g: 0.38679248, b: 0.31563726, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   tutorialSlides:
   - text: Lo! A traveler!
     time: 5
-  - text: Rarely does a stranger visit this land.
+  - text: Just as my prophecy foretold, you have arrived! Great %NAME%!
     time: 5
   - text: Come closer. I shall tell you of our way.
     time: 5
@@ -1949,34 +1949,29 @@ MonoBehaviour:
     time: 5
   - text: You must remember to save your progress often.
     time: 5
-  - text: 
+  - text: Keep all of my advice close in mind.
     time: 5
-  - text: 
+  - text: It shall be invaluable along your journey.
     time: 5
-  - text: 
+  - text: Surely, you have never had a teacher better than I!
     time: 5
-  - text: 
+  - text: Your quest would be for naught without me!
     time: 5
-  - text: 
+  - text: Oh wait, by the way. What's your name?
     time: 5
-  - text: 
+  - text: 'Oh, right. It''s %NAME%. '
     time: 5
-  - text: 
-    time: 5
-  - text: 
-    time: 5
-  - text: 
-    time: 5
-  - text: 
-    time: 5
-  - text: 
+  - text: Erm, %NAME%. Heed my words and you shall succeed!
     time: 5
   defaultText: You shall not succeed!
   victoryText: '...'
   failureText: DEATH BY TUTORIAL
   tutorialCompleteText: Now go, bold hero, upon your quest!
   doorEnteredText: HOMEBOUND <3
-  charIdxAddWait: 0
+  charIdxAddWait: 0.02
+  defaultPitch: 1
+  minFightPitch: 0.9
+  maxFightPitch: 1.2
   tutorialSlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
   fightSlideSound: {fileID: 8300000, guid: afe2a431691d0bf4b921baef7014acfa, type: 3}
   victorySlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
@@ -2181,6 +2176,156 @@ RectTransform:
   m_AnchoredPosition: {x: -12, y: 98.56}
   m_SizeDelta: {x: -200, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1659404607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659404609}
+  - component: {fileID: 1659404608}
+  m_Layer: 0
+  m_Name: Indigo_Torchlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1659404608
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659404607}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 36bd628005da69a4da542eef9d0594f0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.28, y: 1.28}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1659404609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659404607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9, y: 2, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1665391227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665391229}
+  - component: {fileID: 1665391228}
+  m_Layer: 0
+  m_Name: Indigo_Torchlight (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1665391228
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665391227}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 36bd628005da69a4da542eef9d0594f0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.28, y: 1.28}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1665391229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665391227}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9, y: 2, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691330963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeLength: 5
-  menuSceneName: 
+  menuSceneName: MainMenu
   blackImage: {fileID: 1691330965}
 --- !u!1 &1869728778
 GameObject:
