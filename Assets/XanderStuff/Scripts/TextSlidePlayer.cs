@@ -11,6 +11,14 @@ public class TextSlidePlayer : MonoBehaviour {
         public float time;
     }
 
+    public enum EndState
+    {
+        VICTORY,
+        FAILURE,
+        TUTORIAL_COMPLETE
+    }
+
+
     
 
     [Header("Settings")]
@@ -25,6 +33,10 @@ public class TextSlidePlayer : MonoBehaviour {
     private string victoryText;
     [SerializeField]
     private string failureText;
+    [SerializeField]
+    private string tutorialCompleteText;
+    [SerializeField]
+    private string doorEnteredText;
 
     [Header("Links")]
 
@@ -78,7 +90,9 @@ public class TextSlidePlayer : MonoBehaviour {
             {
                 ++slide;
                 if (slide >= tutorialSlides.Length)
-                    textMesh.text = defaultText;
+                {
+                    EndGame(EndState.TUTORIAL_COMPLETE);
+                }
                 else
                 {
                     slideTimer = tutorialSlides[slide].time;
@@ -95,14 +109,25 @@ public class TextSlidePlayer : MonoBehaviour {
         slideTimer = 0f;
     }
 
-    public void EndGame(bool playerWon)
+    public void EndGame(EndState endState)
     {
         gameRunning = false;
+        Wizard.Instance.EndGame();
 
-        if (playerWon)
+        if (endState == EndState.VICTORY)
             textMesh.text = victoryText;
-        else
+        else if (endState == EndState.FAILURE)
             textMesh.text = failureText;
+        else if (endState == EndState.TUTORIAL_COMPLETE)
+        {
+            textMesh.text = tutorialCompleteText;
+            Wizard.Instance.ActivateDoor();
+        }
+    }
+
+    public void EnterDoor()
+    {
+        textMesh.text = doorEnteredText;
     }
 
 }
