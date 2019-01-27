@@ -67,6 +67,9 @@ public class Wizard : MonoBehaviour {
 
     private void Update()
     {
+        if (gameCompleted)
+            return;
+
         float dt = Time.deltaTime;
 
         if(fightMode)
