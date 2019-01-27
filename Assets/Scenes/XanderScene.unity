@@ -2239,6 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeLength: 5
+  menuSceneName: MainMenu
   blackImage: {fileID: 1391220671}
 --- !u!1 &1602801481
 GameObject:
