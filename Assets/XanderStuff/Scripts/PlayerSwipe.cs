@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSwipe : MonoBehaviour {
+public class PlayerSwipe : MonoBehaviour
+{
 
     [SerializeField]
     private float damage;
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,7 +17,10 @@ public class PlayerSwipe : MonoBehaviour {
         {
             w.Damage(damage);
             Destroy(gameObject);
-        }
-    }
 
+        }
+
+
+
+    }
 }

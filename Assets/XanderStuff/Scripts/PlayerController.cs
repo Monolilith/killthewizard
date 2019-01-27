@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
     [SerializeField]
     private GameObject swipePrefab;
+    Animator animator;
 
     public int hp { get; private set; }
     public int MaxHealth { get { return maxHealth; } }
@@ -56,15 +57,15 @@ public class PlayerController : MonoBehaviour {
     //private float prevPosX;
 
 
-
-
     private void Awake()
     {
         hp = maxHealth;
         Instance = this;
+        animator = GetComponent<Animator>();
+        animator.SetBool("Swordy", false);
     }
 
-    private void Update()
+    void Update()
     {
 
         float dt = Time.deltaTime;
@@ -92,6 +93,8 @@ public class PlayerController : MonoBehaviour {
 
         if(Input.GetMouseButtonDown(0) && swipeHeat <= 0)
         {
+
+
             swipeHeat = swipeCooldown;
 
             GameObject obj = Instantiate(swipePrefab);
@@ -105,6 +108,9 @@ public class PlayerController : MonoBehaviour {
 
             obj.GetComponent<Rigidbody2D>().velocity = obj.transform.up * swipeProjectileSpeed;
             Destroy(obj, swipeLifetime);
+
+            StartCoroutine("heck");
+
         }
 
     }
@@ -161,10 +167,46 @@ public class PlayerController : MonoBehaviour {
             Kill();
     }
 
+
+
+
     private void Kill()
     {
         Wizard.Instance.EndGame();
         TextSlidePlayer.Instance.EndGame(false);
     }
+
+
+    private IEnumerator heck()
+    {
+        animator.SetBool("Swordy", true);
+        Debug.Log("aaaaaaaa");
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        animator.SetBool("Swordy", false);
+    }
+
 
 }
