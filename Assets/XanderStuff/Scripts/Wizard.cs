@@ -138,7 +138,7 @@ public class Wizard : MonoBehaviour {
 
             Vector2 S = r.sprite.bounds.size;
             c.size = S;
-            c.offset = new Vector2((S.x / 2), 0);
+            //c.offset = new Vector2((S.x / 2), 0);
 
             t.position = transform.position;
             t.eulerAngles = new Vector3(0f, 0f, increment * i);
