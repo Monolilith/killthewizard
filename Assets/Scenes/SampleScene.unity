@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 40716281}
   - component: {fileID: 40716280}
   - component: {fileID: 40716279}
+  - component: {fileID: 40716284}
   m_Layer: 8
   m_Name: Player (1)
   m_TagString: Untagged
@@ -239,7 +240,7 @@ MonoBehaviour:
   maxHealth: 3
   swipeProjectileSpeed: 15
   swipeLifetime: 0.5
-  swipeCooldown: 3
+  swipeCooldown: 0
   fallAccelMultiplier: 5
   ungroundedThreshold: 0.1
   groundCastSize: 1
@@ -265,6 +266,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &40716284
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 40716278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60242c9cd6eec024ea19641ed45741a8, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &208209886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slides:
-  - text: You cannot even fathom the wisdom I have to impart.
+  - text: You would dare assault me?!
     time: 5
   - text: I, the great T'TUR RAYEL, can show you the way of the world itself!
     time: 3
@@ -1546,8 +1565,26 @@ MonoBehaviour:
     time: 5
   - text: You listened to me once, and you'll listen again!
     time: 5
-  tutorialSlides: []
-  defaultText: Blah blah blah...
+  tutorialSlides:
+  - text: Lo! A traveler!
+    time: 5
+  - text: Rarely does a stranger visit this land.
+    time: 5
+  - text: Come closer. I shall tell you of our way.
+    time: 5
+  - text: Use A to move left. Use D to move right.
+    time: 5
+  - text: You may jump with the aid of your spacebar.
+    time: 5
+  - text: Your sword can fire beams in a direction you click.
+    time: 5
+  - text: Have caution! The magic of foes may harm you!
+    time: 5
+  - text: You may jump with the aid of your spacebar.
+    time: 5
+  - text: Blah blah blah blah...
+    time: 5
+  defaultText: You shall not succeed!
   victoryText: HOMEBOUND
   failureText: DEATH BY TUTORIAL
   textMesh: {fileID: 403554991}
