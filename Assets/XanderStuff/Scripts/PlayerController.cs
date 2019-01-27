@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour {
         Instance = this;
         animator = GetComponent<Animator>();
         animator.SetBool("Swordy", false);
+        animator.SetBool("Gamover", false);
 
     }
 
@@ -172,6 +173,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Kill()
     {
+        animator.SetBool("Gamover", true);
         Wizard.Instance.EndGame();
         TextSlidePlayer.Instance.EndGame(TextSlidePlayer.EndState.FAILURE);
         enabled = false;

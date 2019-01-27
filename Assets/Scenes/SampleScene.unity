@@ -397,7 +397,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 250c329a389c22a49952d5881d5abeec, type: 3}
   - waitBeforeLaunch: 1
     bulletCount: 6
-    sprite: {fileID: 21300000, guid: 19cf04f89a4433840810fafee23f6922, type: 3}
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
     wordWave: 0
     wordSprites: []
   - waitBeforeLaunch: 1
@@ -410,8 +410,141 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
     wordWave: 0
     wordSprites: []
+  - waitBeforeLaunch: 5
+    bulletCount: 4
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 1
+    wordSprites:
+    - {fileID: 21300000, guid: e50911d7d4bb56e43a39d4ea4e579912, type: 3}
+    - {fileID: 21300000, guid: 4a34e042da9f9694a93163bc371bb3e7, type: 3}
+    - {fileID: 21300000, guid: 30a0aa98889606646924bb5100ad358f, type: 3}
+    - {fileID: 21300000, guid: 7626d74a936a3c4489b155b504f85133, type: 3}
+  - waitBeforeLaunch: 1
+    bulletCount: 4
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 1
+    bulletCount: 5
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 1
+    bulletCount: 6
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 1
+    bulletCount: 5
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 3
+    bulletCount: 3
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 8
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 5
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 6
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
   - waitBeforeLaunch: 3
     bulletCount: 8
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 7
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 6
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 7
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 8
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.5
+    bulletCount: 7
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 3
+    bulletCount: 4
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 5
+    bulletCount: 4
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 1
+    wordSprites:
+    - {fileID: 21300000, guid: 260133d0998995040a4ca56a6084e2ce, type: 3}
+    - {fileID: 21300000, guid: 0a41218ffac22284dbf5b7157728b782, type: 3}
+    - {fileID: 21300000, guid: 0a41218ffac22284dbf5b7157728b782, type: 3}
+    - {fileID: 21300000, guid: 83329a3fc5c631442803a1b6dd314a18, type: 3}
+  - waitBeforeLaunch: 0.3
+    bulletCount: 5
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 6
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 5
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 7
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 6
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 5
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 8
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 7
+    sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
+    wordWave: 0
+    wordSprites: []
+  - waitBeforeLaunch: 0.3
+    bulletCount: 5
     sprite: {fileID: 21300000, guid: c11ef1589cf9370408d67bba5d2cfabd, type: 3}
     wordWave: 0
     wordSprites: []
