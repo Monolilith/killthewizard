@@ -182,6 +182,7 @@ public class PlayerController : MonoBehaviour {
     {
         Wizard.Instance.EndGame();
         TextSlidePlayer.Instance.EndGame(TextSlidePlayer.EndState.FAILURE);
+        enabled = false;
     }
 
 
