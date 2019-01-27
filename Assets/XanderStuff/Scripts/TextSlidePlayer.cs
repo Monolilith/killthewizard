@@ -39,6 +39,12 @@ public class TextSlidePlayer : MonoBehaviour {
     private string doorEnteredText;
     [SerializeField]
     private float charIdxAddWait;
+    [SerializeField]
+    private float defaultPitch;
+    [SerializeField]
+    private float minFightPitch;
+    [SerializeField]
+    private float maxFightPitch;
 
     [Header("Audio Links")]
 
@@ -77,6 +83,7 @@ public class TextSlidePlayer : MonoBehaviour {
     private void Awake()
     {
         Instance = this;
+        audioSource.pitch = defaultPitch;
     }
 
     private void Update()
@@ -111,6 +118,7 @@ public class TextSlidePlayer : MonoBehaviour {
             if (slideTimer <= 0)
             {
                 ++slide;
+                audioSource.pitch = Random.Range(minFightPitch, maxFightPitch);
                 audioSource.PlayOneShot(fightSlideSound);
                 if (slide >= slides.Length)
                 {
@@ -161,6 +169,8 @@ public class TextSlidePlayer : MonoBehaviour {
     {
         if (!gameRunning)
             return;
+
+        audioSource.pitch = defaultPitch;
 
         gameRunning = false;
         Wizard.Instance.EndGame();

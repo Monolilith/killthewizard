@@ -1700,6 +1700,9 @@ MonoBehaviour:
   tutorialCompleteText: You are now ready to go into the world!
   doorEnteredText: GAME_COMPLETE
   charIdxAddWait: 0.02
+  defaultPitch: 1
+  minFightPitch: 0.9
+  maxFightPitch: 1.2
   tutorialSlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
   fightSlideSound: {fileID: 8300000, guid: afe2a431691d0bf4b921baef7014acfa, type: 3}
   victorySlideSound: {fileID: 8300000, guid: 632fe66e4dab8a94ea3b0d6de3f8f402, type: 3}
