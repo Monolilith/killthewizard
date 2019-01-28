@@ -36,6 +36,12 @@ public class Wizard : MonoBehaviour {
     private AudioClip shootSound;
     [SerializeField]
     private AudioClip hitSound;
+    [SerializeField]
+    private AudioClip mainMusic;
+    [SerializeField]
+    private AudioClip fightMusic;
+    [SerializeField]
+    private AudioClip failureFanfare;
 
     [Header("Links")]
 
@@ -49,6 +55,8 @@ public class Wizard : MonoBehaviour {
     private GameObject exitDoor;
     [SerializeField]
     private AudioSource audioSource;
+    [SerializeField]
+    private AudioSource musicPlayer;
 
     public static Wizard Instance { get; private set; }
     public float MaxHealth { get { return maxHealth; } }
@@ -152,11 +160,17 @@ public class Wizard : MonoBehaviour {
     public void EndGame()
     {
         gameCompleted = true;
+        musicPlayer.clip = mainMusic;
+        musicPlayer.Stop();
+        musicPlayer.Play();
+        if(PlayerController.Instance.hp <= 0)
+            audioSource.PlayOneShot(failureFanfare);
     }
 
     public void ActivateDoor()
     {
         exitDoor.SetActive(true);
+        audioSource.pitch = 1f;
     }
 
     public void Damage(float amt)
@@ -168,6 +182,9 @@ public class Wizard : MonoBehaviour {
 
         if(!fightMode)
         {
+            musicPlayer.clip = fightMusic;
+            musicPlayer.Stop();
+            musicPlayer.Play();
             fightMode = true;
             timer = waves[0].waitBeforeLaunch;
             BlackPanelRise.Instance.Rise();
