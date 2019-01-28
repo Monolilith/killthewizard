@@ -1970,7 +1970,7 @@ MonoBehaviour:
     time: 5
   defaultText: You shall not succeed!
   victoryText: '...'
-  failureText: DEATH BY TUTORIAL
+  failureText: Now, as I was saying...
   tutorialCompleteText: Now go, bold hero, upon your quest!
   doorEnteredText: HOMEBOUND <3
   charIdxAddWait: 0.02
